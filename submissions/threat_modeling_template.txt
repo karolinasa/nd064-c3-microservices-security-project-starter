@@ -4,6 +4,18 @@ Given Docker's system components and the STRIDE framework, identify five potenti
 Kubernetes Threat Modeling
 Given Kubernetes' system components and the STRIDE framework, identify five potential threats that may arise.
 
+Submission should include 5 concrete attack surface areas for the Docker environment and 5 concrete attack surface areas for the Kubernetes control plane, etcd, and worker.
+
+In the explanation, associate each attack surface area to at least one pillar of the STRIDE model, which includes
+
+Spoofing
+Tampering
+Repudiation
+Information Disclosure
+Denial of Service
+Elevation of Privilege
+There can be multiple attack surface areas associated with one pillar, but the attack surface areas have to be distinct.
+
 Docker-bench Run Results and Analysis
 Remediated these weaknesses:
 1. [FAIL] 2.2 Ensure network traffic is restricted between containers on the default bridge (Automated)
