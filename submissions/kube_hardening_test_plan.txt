@@ -1,0 +1,14 @@
+# TODO: remove hardening steps taken
+Rancher RKE Baseline was implemented to harden the RKE cluster.
+That includes:
+1) Creating etcd user and group
+2) Ensuring that the etcd data directory ownership is set to etcd:etcd
+3) Configuring Kernel Runtime parameters
+4) Updating cluster.yml file with hardening steps
+
+# TODO: 200 words
+1) How you will test the changes?
+The changes will be tested using a test cluster.
+2) How you will ensure the changes don't negatively affect your cluster?
+The changes will be tested using a test cluster not touching the production environment.
+After applying changes Prometheus and Grafana will be used to monitor metrics. 
