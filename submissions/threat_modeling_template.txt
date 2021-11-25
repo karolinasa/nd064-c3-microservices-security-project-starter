@@ -1,22 +1,19 @@
-# TODO
 Docker Threat Modeling
-Given Docker's system components and the STRIDE framework, identify five potential threats that may arise.
+Spoofing - Client traffic to docker daemon or docker registry could be spoofed if TLS is not used.
+Tampering - TLS CA certificate file should be protected from  modification of unprivileged users as it may affect communication security.
+Repudiation - A user may make changes to the docker daemon that are not correct, that may lead to repudiation.
+Information Disclosure - Sensitive data may be left in container images that could be exposed.
+Denial of Service - A container may use all available memory to run on the host - memory limit should be specified when running the container.
+Elevation of Privilege - Docker client usage on the administrator's machine may be compromised as the attacker may gain access to it. 
 
-# TODO
 Kubernetes Threat Modeling
-Given Kubernetes' system components and the STRIDE framework, identify five potential threats that may arise.
-
-Submission should include 5 concrete attack surface areas for the Docker environment and 5 concrete attack surface areas for the Kubernetes control plane, etcd, and worker.
-
-In the explanation, associate each attack surface area to at least one pillar of the STRIDE model, which includes
-
-Spoofing
-Tampering
-Repudiation
-Information Disclosure
-Denial of Service
-Elevation of Privilege
-There can be multiple attack surface areas associated with one pillar, but the attack surface areas have to be distinct.
+Spoofing - The connection between the API server and kubelet may be spoofed. The connection should be encrypted. 
+Tampering - Configuration of etcd may be modified by an attacker. Permissions to etcd files should be restricted.
+Repudiation - Certificate should be revoked when necessary as Kubernetes by default doesn't allow certificate revocation, which may allow repudiation.
+Information Disclosure - Sensitive information may be disclosed in etcd through key-value pairs. This information should be encrypted.
+Denial of Service - No memory limit set on Kubernetes may cause an exhaustion of resources when running the pod. Memory limit should be set.
+Elevation of Privilege - --privileged flag could be used that affects kube-apiserver as the container process is launched without any further 
+security checks. The usage of this flag should be avoided.
 
 Docker-bench run results and analysis
 Remediated these weaknesses:
@@ -41,3 +38,5 @@ Content trust provides the ability to use digital signatures for data sent to an
 from remote Docker registries. These signatures allow client-side verification of the
 identity and the publisher of specific image tags and ensures the provenance of container
 images.
+
+Reference - CIS Docker Benchmark v1.2.0
