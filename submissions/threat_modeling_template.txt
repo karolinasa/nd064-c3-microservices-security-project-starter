@@ -1,6 +1,8 @@
+# TODO
 Docker Threat Modeling
 Given Docker's system components and the STRIDE framework, identify five potential threats that may arise.
 
+# TODO
 Kubernetes Threat Modeling
 Given Kubernetes' system components and the STRIDE framework, identify five potential threats that may arise.
 
@@ -16,7 +18,7 @@ Denial of Service
 Elevation of Privilege
 There can be multiple attack surface areas associated with one pillar, but the attack surface areas have to be distinct.
 
-Docker-bench Run Results and Analysis
+Docker-bench run results and analysis
 Remediated these weaknesses:
 1. [FAIL] 2.2 Ensure network traffic is restricted between containers on the default bridge (Automated)
 By default, unrestricted network traffic is enabled between all containers on the same host
