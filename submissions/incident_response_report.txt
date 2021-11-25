@@ -1,7 +1,18 @@
-# TODO
 1. Incident commander name:
+Crypto-mining containers (minergate, moneropool, xmrpooldotnet) were launched affecting CPU usage.
 2. Executive Summary of what happened:
+Three different crypto miners (minergate, moneropool, xmrpooldotnet) were launched.
+They used CPU resources until being destroyed 20 minutes after their launch.
+Suspicious activity was noticed in Grafana through Falco logs.
 3. Summary of what was affected:
+CPU usage was affected. The usage increased by 30% after crypto miners launch.
 4. Summary of the impact:
+The attacker was able to access the cluster and launch containers that used CPU resources.
 5. Summary of the remediation steps:
+After noticing a significant jump in CPU usage the exact cause was detected through Falco in
+Grafana monitoring dashboard.
+Crypto-mining pods were destroyed.
+The following remediation steps being taken are increasing security of the cluster.
 6. Summary of lessons learned:
+Using unidentified images should not be allowed in the system. Access to the cluster and config files
+should be adjusted.
