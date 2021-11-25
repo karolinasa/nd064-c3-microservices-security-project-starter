@@ -1,14 +1,11 @@
-# TODO: remove hardening steps taken
-Rancher RKE Baseline was implemented to harden the RKE cluster.
-That includes:
-1) Creating etcd user and group
-2) Ensuring that the etcd data directory ownership is set to etcd:etcd
-3) Configuring Kernel Runtime parameters
-4) Updating cluster.yml file with hardening steps
+How you will test the changes?
+The changes will be tested using a test cluster. To test the changes under the traffic usually received to a production cluster, 
+canary testing technique will be used - part of the traffic will be split to be forwarded to the test environment. 
+Prometheus and Grafana will be used for monitoring as tools to collect and visualize the metrics and also check the stability of the cluster.
+Production cluster will be left untouched during testing.
 
-# TODO: 200 words
-1) How you will test the changes?
-The changes will be tested using a test cluster.
-2) How you will ensure the changes don't negatively affect your cluster?
+How you will ensure the changes don't negatively affect your cluster?
 The changes will be tested using a test cluster not touching the production environment.
-After applying changes Prometheus and Grafana will be used to monitor metrics. 
+After applying changes Prometheus and Grafana will be used to monitor metrics and check if the cluster is stable.
+Falco will also be used to collect all the suspicious activity received in the cluster. This way the administrators will be aware if the changes made are enough to harden the cluster and if they were applied correctly. Falco rules directly related to the changes applied may also be prioritized at to specifically test the changes applied to the cluster.
+Only after ensuring that the load of traffic or any activity in the cluster does not affect it negatively will the changes be deployed to the production cluster.
